@@ -1,5 +1,5 @@
+// g++ main.cpp
 #include <stdio.h>
-#include <stdlib.h>
 
 int main( int nARG, char** ppARG ) {
     for( int i = nARG; i; i-- ) 

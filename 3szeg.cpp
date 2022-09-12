@@ -1,7 +1,8 @@
+// g++ 3szeg.cpp -lGLESv2 -lglfw
+
 #include <stdio.h>
 #include <stdlib.h>
 
-// g++ main.cpp -lGLESv2 -lglfw
 #define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>
 
@@ -80,7 +81,7 @@ int main( int nARG, char** ppARG ) {
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-    pWND = glfwCreateWindow(WIDTH, HEIGHT, "__FILE__", NULL, NULL);
+    pWND = glfwCreateWindow(WIDTH, HEIGHT, "3szeg", NULL, NULL);
     if( !pWND ) {
         printf( "%0.8x. not good!\r\n", pWND  );
         return EXIT_FAILURE;
@@ -103,13 +104,14 @@ int main( int nARG, char** ppARG ) {
     glVertexAttribPointer(pos, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
     glEnableVertexAttribArray(pos);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+    int iFRM = 0;
     while (!glfwWindowShouldClose(pWND)) {
         glfwPollEvents();
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(iGLSLprg);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(pWND);
+        printf( "iFRM %0.8x\r\n", (iFRM++)  );
     }
     glDeleteBuffers(1, &iGLvxb);
     glfwTerminate();

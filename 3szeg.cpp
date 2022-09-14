@@ -19,7 +19,7 @@ static const GLchar* sGLSLfr =
     "void main() {\n"
     "   gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
     "}\n";
-static const GLfloat aVX3[] = {
+static const GLfloat aVX3x3[] = {
      0.0f,  0.5f, 0.0f,
      0.5f, -0.5f, 0.0f,
     -0.5f, -0.5f, 0.0f,
@@ -100,7 +100,7 @@ int main( int nARG, char** ppARG ) {
 
     glGenBuffers(1, &iGLvxb);
     glBindBuffer(GL_ARRAY_BUFFER, iGLvxb);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(aVX3), aVX3, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(aVX3x3), aVX3x3, GL_STATIC_DRAW);
     glVertexAttribPointer(pos, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
     glEnableVertexAttribArray(pos);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
